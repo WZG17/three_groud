@@ -1,7 +1,9 @@
+
 *{
 	   		padding: 0;
-	   		margin: 0;
-	   	}
+	   		margin: 0;	}
+
+	  
 	   	.all{
 			width: 100%;
 			height: 100%;
@@ -13,9 +15,13 @@
 			line-height: 2.3rem;
 			color: #fff;
 			text-align: center;
+			position: relative;
 	   	}
 	   	.all .topBanner span{
-	   		font-size: 0.85rem;
+	   	font-size: 1.45rem;
+	   	left: 125px;top: 10px;
+	   		color: white;position: absolute;
+
 	   	}
 	   	.con{
 	   		width: 100%;
@@ -30,14 +36,14 @@
 	   		margin-top: 1.0rem;	
 	   	}
 	   	.con .con_main span{
-	   		font-family: MicrosoftYaHei;
-	   		display: block;
-			font-size:0.75rem;
-			font-weight: normal;
-			font-stretch: normal;
-			line-height: 0.7rem;
-			/*letter-spacing: 3px;*/
-			color: #666666;
+    font-family: MicrosoftYaHei;
+    display: block;
+    font-size: 1rem;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.2rem;
+    letter-spacing: 2px;
+    color: #666666;position: relative;top: 3px;
 	   	}
 	   	.con .con_main .phone{
 	   		width: 100%;
@@ -46,32 +52,31 @@
 			margin-bottom: 1rem;
 	   	}
 	   .con .con_main .phone .number{
-			width: 9.3rem;
-			height: 1.85rem;
-			color: #cccccc;
-			font-family: MicrosoftYaHei;
-			font-size: 0.75rem;
-			font-weight: normal;
-			border: none;
-			border-radius:0.25rem;
-			
-			padding-left:0.45rem ;
-			float: left;
+width: 9.9rem;
+    height: 2.5rem;
+    color: #cccccc;
+    font-family: MicrosoftYaHei;
+    font-size: 0.95rem;
+    font-weight: normal;
+    border: none;
+    border-radius: 0.25rem;
+    padding-left: 2.95rem;
+    float: left;
 	   }
 	   .con .con_main .phone .butt{
-			width: 4.6rem;
-			height: 1.6rem;
-			border: none;
-			text-align: center;
-			font-family: MicrosoftYaHei;
-			font-size: 0.75rem;
-			color: #ffffff;
-			font-weight: normal;
-			border-radius:0.25rem;
-			background-color: #ff8288;
-			float: left;
-			margin-left: 0.3rem;
-			margin-top: 0.1rem;
+    width: 5.5rem;
+    height: 2.0rem;
+    border: none;
+    text-align: center;
+    font-family: MicrosoftYaHei;
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: normal;
+    border-radius: 0.25rem;
+    background-color: #ff8288;
+    float: left;
+    margin-left: 1.5rem;
+    margin-top: 0.4rem;
 	   }
 	 	
 		.con .con_main .yzm{
@@ -80,35 +85,34 @@
 			margin-top:0.825rem;
 		}
 		.con .con_main .yzm .nums{
-			border: none;
-			width: 96%;
-			height: 1.85rem;
-			border-radius: 0.25rem;
-			font-family: MicrosoftYaHei;
-			font-size: 0.75rem	;
-			font-weight: normal;
-			color: #cccccc;
-			padding-left: 0.45rem;
-			margin-bottom: 1.0rem;
+    border: none;
+    width: 96%;
+    height: 2.3rem;
+    border-radius: 0.25rem;
+    font-family: MicrosoftYaHei;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: #cccccc;
+    padding-left: 0.45rem;
+    margin-bottom: 1.0rem;
 		}
 		.con .con_main .yzm .denglu{
-			width: 100%;
-			height: 2.35rem;
-			text-align: center;
-			line-height: 2.35rem;
-			background-color: #ff8288;
-			color: #ffffff;
-			border: none;
-			border-radius: 0.25rem;
-			font-family: MicrosoftYaHei;
-			font-size: 0.9rem;
+	    width: 100%;
+    height: 2.75rem;
+    text-align: center;
+    line-height: 2.75rem;
+    background-color: #ff8288;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.25rem;
+    font-family: MicrosoftYaHei;
+    font-size: 1.3rem;
 		}
 		.con .con_main .yzm span{
 			display: block;
-			width: 11.425rem;
 			height: 0.575rem;
 			font-family: SimSun;
-			font-size: 0.6rem;
+			font-size: 0.99rem;
 			font-weight: normal;
 			font-stretch: normal;
 			line-height: 0.9rem;
