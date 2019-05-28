@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编辑</title>
+	<link rel="stylesheet" href="../css/m-common.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/diary.css">
+	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/rem.js"></script>
+	<script src="../js/login.js"></script>
+	<style type="text/css">
+		.click{
+			background: url(../images/imgs11.png) no-repeat;
+			background-size: 1.25rem 1.2rem;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="topBanner">
+			<div class="click"></div>
+			<span id="fasong">发送</span>
+		</div>
+		<div class="big">
+			<textarea type="text" placeholder="写下你此刻的想法........"  class="numb"value=""></textarea>
+			<ul class="arrange" id="myUpload">
+				<!--< li><img src="../images/boy-1.jpg" alt=""></li>
+				<li><img src="../images/boy-1.jpg" alt=""></li>
+				<li><img src="../images/boy-1.jpg" alt=""></li>
+				<li><img src="../images/boy-1.jpg" alt=""></li>
+				<li><img src="../images/add.png" alt=""></li> -->
+			</ul>
+		</div>
+	</div>	
+	<script>
+		window.localStorage.tel='13573423623'
+		
+		$('#fasong').click(function(){
+			var $img=$('.arrange img').attr('src')
+			$.ajax({
+                url:'../mvc/index.php?c=Login&a=register',
+                type:'post',
+                data:{
+                    message:$('.numb').val(),
+                    image:$img,
+                    title:localStorage.tel,
+                },
+                success:function(str){
+                	var datas=JSON.parse(str)
+                    console.log(str)
+                    if (datas.code=='200') {
+			            alert('发布成功')
+			            window.location.href='journal.html'
+			        };
+                }
+            });
+		})
+		
+	</script>
+	<script type="text/javascript" src="../js/jquery.form.js"></script>
+    <script type="text/javascript" src="../js/diray_myUpload.js"></script>
+    <script type="text/javascript">
+       $("#myUpload").upload({uploadPath:'../mvc/upload.php', isMulti:true, initValue:[], callback:function(msg){
+    	     console.log(msg);
+	        }
+	    });
+
+       	$('#numb').on('click',function(){
+			console.log('duan')
+			$(this).html('')
+		})
+       	$('.click').click(function(){
+       		window.location.href='journal.html'
+       	})
+    </script>
+</body>
+</html>
