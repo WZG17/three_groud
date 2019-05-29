@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日记墙</title>
+	<link rel="stylesheet" href="../css/m-common.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/journal.css">
+	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/rem.js"></script>
+	<script src="../js/login.js"></script>
+	<style type="text/css">
+		.click{
+			background: url(../images/logo.png) no-repeat;
+			background-size: 1.25rem 1rem;
+		}
+		.achieve{
+			background: url(../images/log2.png) no-repeat;
+			background-size: 1.25rem 1rem;
+		}
+		.p{
+			position: relative;
+			top: -1rem;
+			left: 4rem;
+		}
+		.p img{
+			width: 8.5rem;
+			height: 6.5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="topBanner">
+			<div class="click"></div>
+			<span class="select">日记墙</span>
+			<span class="achieve"></span>
+		</div>
+		<div class="edition">
+			<!-- <div class="numb">
+				<div class="head">
+					<img src="./images/girl-1.jpg" alt="">
+				</div>
+				<div class="name">
+					<span class="sdhdship">娟子</span>
+					<span class="time">8小时前</span>
+				</div>
+				<div class="details">
+					<span>遇见你，暗恋你，更加喜欢上了你，爱情美美哒。。。</span>
+
+				</div>
+				<p class="p"><img src="./images/girl-1.jpg" alt=""></p>
+			</div> -->
+		</div>
+	</div>	
+	<script>
+		$('.click').click(function(){
+			window.location.href='zhuye.html'
+		})
+		$('.achieve').click(function(){
+			window.location.href='diary.html'
+		})
+		var a=window.localStorage.tel
+		console.log(JSON.parse(a).tel)
+
+		var $img=$('.head img').attr('src')
+		$.ajax({
+            url:'../mvc/index.php?c=Login&a=query',
+            type:'post',
+            data:{
+                message:$('.details').val(),
+                image:$img,
+                tel:JSON.parse(a).tel,
+                date:$('.time').val(),
+            },
+            success:function(data){
+                	var datas=JSON.parse(data)
+                	 console.log(datas)
+                    $.each(datas.data,function(i,item){
+                    	var unixTimestamp = new Date(item.date*1000 );
+                        commonTime=unixTimestamp.toLocaleString();
+//                  	console.log(item.message)
+                    	$('.edition').prepend(`
+                    		<div class="numb">
+								<div class="head">
+					<img src="${item.head}" alt="">
+				</div>
+				<div class="name">
+					<span class="sdhdship">${item.name}</span>
+					<span class="time">${commonTime}</span>
+				</div>
+				<div class="details">
+					<span>${item.message}</span>
+				</div><p class="p"><img src="${item.image}" alt=""></p></div>
+                    `)
+               })
+            }
+        });
+
+		Date.prototype.toLocaleString = function() {
+		    return this.getFullYear() + "-" + (this.getMonth() + 1) + "-" + this.getDate() + "-" + this.getHours() + ":" + this.getMinutes() + ":" + this.getSeconds();
+		};
+
+		
+	</script>
+</body>
+</html>

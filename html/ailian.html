@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登陆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../css/slideshow.css">
+    <link rel="stylesheet" href="../css/m-common.css"> 
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/denglu.css">
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../images/bg1.png" alt=""></div>
+            <div class="swiper-slide"><img src="../images/bg2.png" alt=""></div>
+            <div class="swiper-slide"><img src="../images/bg3.png" alt=""></div>
+            <div class="swiper-slide">
+                <div class="all">
+                    <div class="topBanner">
+                        <span>绑定手机号</span>
+                    </<div></div>
+                    <div class="con">
+                        <div class="con_main">
+                            <span>免费绑定手机，看看谁暗恋了自己</span>
+                            <div class="phone">
+                                <input type="text" placeholder="填写11位手机号码" id="phone" class="number"value="">
+                                <input type="button" value="获取验证码" class="butt">
+                            </div>
+                            <div class="shows">
+                                <p style="display: none" class="yes">您的验证码正在发送到您的手机，请耐心等待...</p>
+                                <p style="display: none" class="no">您输入的手机号有误，请重新输入!</p>
+                            </div>
+                            <span>&nbsp;</span>
+                            <div class="yzm">
+                                <input type="text" placeholder="请填写手机验证码" class="nums">
+                                <p class="yw" style="display: none" >您输入的验证码有误</p>
+                                <input type="button" value="登录" class="denglu" id="logBtn">
+                                <span>输入手机号填写收到的验证码即可登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--     <div class="swiper-pagination"></div> -->
+    </div>
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/slideshow.js"></script>
+
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    })
+    var off=0;
+    $('#phone').blur(function(){
+        var that=this
+        $.ajax({
+            url:'../mvc/index.php?c=Login&a=blur',
+            data:{tel:$(that).val()},
+            success:function(data){
+                var datas=JSON.parse(data)
+                off=datas.data.length
+
+            }
+        })
+    })
+	var c=''
+    var off=false
+	$('.butt').click(function(){
+
+		var arr=new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','I','S','T','U','V','W','X','Y','Z',);
+		var c='';
+        if (off==false) {
+        for (var i = 0; i <4; i++) {
+            var index=Math.floor(Math.random()*arr.length);
+            c+=arr[index]
+            console.log(c)
+            $('.butt').val(c)
+            }
+            // alert(c)
+        };
+		
+
+        off=true
+		$('.denglu').click(function(){
+			if ($('#phone').val()=='') {
+				alert('请输入手机号')
+				return false
+			}
+			if (c!=$('.nums').val()) {
+				alert('验证码不正确')
+				return false
+			}
+		    else{
+				alert('登录成功')
+				localStorage.tel=JSON.stringify({tel:$('#phone').val()})
+				window.location.href='personal .html'
+			}
+		    if (off==0) {
+                 $.ajax({
+                type:"post",
+                url:"../mvc/index.php?c=Login&a=registers",
+                data:{
+                    tel:$('.number').val(),
+                },
+                success:function(data){
+                    var str=JSON.parse(data)
+                    console.log(str)
+                   
+                }
+            })
+            };
+		    
+		  
+			  window.location.href='zhuye.html'	
+
+		})
+		
+	})
+	
+	
+	
+	
+	
+
+
+    </script>
+</body>
+</html>
